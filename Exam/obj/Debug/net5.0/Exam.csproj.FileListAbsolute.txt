@@ -1,0 +1,15 @@
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.AssemblyInfo.cs
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\Exam.exe
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\Exam.deps.json
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\Exam.runtimeconfig.json
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\Exam.runtimeconfig.dev.json
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\Exam.dll
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\ref\Exam.dll
+C:\Users\HP\source\repos\Exam\Exam\bin\Debug\net5.0\Exam.pdb
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.dll
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\ref\Exam.dll
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.pdb
+C:\Users\HP\source\repos\Exam\Exam\obj\Debug\net5.0\Exam.genruntimeconfig.cache
