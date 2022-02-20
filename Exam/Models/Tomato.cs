@@ -5,24 +5,28 @@ using System.Collections.Generic;
 namespace Exam.Models
 {
     [Serializable]
-    public class Tomato : Vegetable
+    public sealed class Tomato : Vegetable
     {
         [NonSerialized]
-        public const string name = "Tomato";
+        public const string name = nameof(Tomato);
 
-        private static List<decimal> rating { get; }
-        public static decimal AverageRating
+        [NonSerialized]
+        public const double price = 0.70;
+
+        public override double Price { get { return Tomato.price; } }
+
+        private static List<int> _ratings = new();
+        public static int AverageRating
         {
-            get { return (rating.Sum() / rating.Count); }
+            get { return (_ratings.Sum() / _ratings.Count); }
             set
             {
-                if (value > 0 & value < 11) rating.Add(value);
-                else throw new ArgumentOutOfRangeException(nameof(value), "The rating of vegetables cannot be less than zero and more than ten!");
+                if (value > 2 & value < 11) _ratings.Add(value);
+                else throw new ArgumentOutOfRangeException(nameof(value), "The rating of vegetables cannot be less than two and more than ten!");
             }
         }
 
-        static Tomato() => rating = new();
-
+        public Tomato() { }
         public Tomato(VegetableStatus status) : base(status) { }
     }
 }

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace Exam.Services
 {
-    public class LegacyService
+    public static class LegacyService
     {
         [DllImport("User32.dll", EntryPoint = "MessageBoxA")]
-        public static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
+        public static extern int MessageBox(System.IntPtr hWnd, string text, string caption, uint type);
     }
 }

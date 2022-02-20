@@ -10,7 +10,7 @@ namespace Exam.Services
 
         public static double RandomDouble() => RandomProp.NextDouble();
 
-        public static object? RandomEnumElement(Type data)
+        public static object RandomEnumElement(Type data)
         {
             var arr = data.GetEnumValues();
 
@@ -19,7 +19,7 @@ namespace Exam.Services
 
             int temp = RandomProp.Next(total);
 
-            for (int i = 0, sum = 0; i < arr.Length; i++)
+            for (int i = arr.Length - 1, sum = 0; i >= 0; i--)
             {
                 sum += Convert.ToInt32(arr.GetValue(i));
                 if (temp < sum) return arr.GetValue(i);

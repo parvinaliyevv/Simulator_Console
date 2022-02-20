@@ -21,35 +21,6 @@ namespace Exam
         {
             byte choice = default, column = 2, row = 15;
 
-            // Form 1
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"   _____ _                 __      __");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"  / ___/(_____ ___  __  __/ ____ _/ /_____  _____");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"  \__ \/ / __ `__ \/ / / / / __ `/ __/ __ \/ ___/");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@" ___/ / / / / / / / /_/ / / /_/ / /_/ /_/ / /");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"/____/_/_/ /_/ /_/\__,_/_/\__,_/\__/\____/_/");
-
-            // Form 2
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@" ____                            ___            __");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"/\  _`\   __                    /\_ \          /\ \__");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"\ \,\L\_\/\_\    ___ ___   __  _\//\ \      __ \ \ ,_\   ___   _ __");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@" \/_\__ \\/\ \ /' __` __`\/\ \/\ \\ \ \   /'__`\\ \ \/  / __`\/\`'__\");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"   /\ \L\ \ \ \/\ \/\ \/\ \ \ \_\ \\_\ \_/\ \L\.\\ \ \_/\ \L\ \ \ \/");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"   \ `\____\ \_\ \_\ \_\ \_\ \____//\____\ \__/.\_\ \__\ \____/\ \_\");
-            // Console.SetCursorPosition(row, column++);
-            // Console.WriteLine(@"    \/_____/\/_/\/_/\/_/\/_/\/___/ \/____/\/__/\/_/\/__/\/___/  \/_/");
-
-            // Form 3
             Console.SetCursorPosition(row, column++);
             Console.WriteLine(@"     _______.__ .___  ___. __    __  __          ___  .___________. ______  .______");
             Console.SetCursorPosition(row, column++);
@@ -94,29 +65,36 @@ namespace Exam
 
         static void NewGame(string filename)
         {
+            MyShop.Budget = 5000;
+
+            MyShop.AddWorker("Murad", "Musali", 14, "Stands spinner", 400);
+            MyShop.AddWorker("Ramo", "Mustafazade", 15, "Stands spinner", 500);
+            MyShop.AddWorker("Parvin", "Aliyev", 16, "Stands spinner", 300);
+
             if (!filename.EndsWith(".bin")) filename = filename.Insert(filename.Length, ".bin");
-            BinarySerializer.Serialize(filename.ToString(), MyShop);
+            SerializeService.Serialize(filename.ToString(), MyShop);
 
         }
-        static bool loadGame(string filename)
+        static void loadGame(string filename)
         {
             try
             {
                 if (!filename.EndsWith(".bin")) filename = filename.Insert(filename.Length, ".bin");
-                MyShop = BinarySerializer.Deserialize(filename) as Shop;
-                return true;
+                MyShop = SerializeService.Deserialize(filename) as Shop;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.ReadKey();
-                return false;
+                LegacyService.MessageBox(IntPtr.Zero, ex.Message, "File not found", 0);
             }
         }
 
         static void Update()
         {
+            MyShop.EnqueueCustomers();
+
             time = time.AddHours(1);
+
+            MyShop.DequeueCustomers();
 
             Console.SetCursorPosition(97, 30);
             Console.WriteLine(time);
@@ -125,6 +103,7 @@ namespace Exam
 
         static void Main(string[] args)
         {
+            MyShop.CalcProducts();
             LoadOptions();
             var choice = Menu() + 4;
 
@@ -143,9 +122,6 @@ namespace Exam
             }
             else if (choice.Equals(3)) return;
             else Console.WriteLine("You are OK?");
-
-            MyShop.print();
-            Console.ReadKey();
 
             while (true)
             {

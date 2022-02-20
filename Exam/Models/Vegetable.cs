@@ -1,52 +1,59 @@
 ﻿using System;
 using System.Timers;
-using Exam.Services;
 
 namespace Exam.Models
 {
     [Serializable]
-    public class Vegetable
+    public abstract class Vegetable
     {
         [NonSerialized]
-        private System.Timers.Timer StatusChanger = new(RandomService.RandomInteger(72000, 144000));
+        private System.Timers.Timer _statusChanger = new(Exam.Services.RandomService.RandomInteger(72000, 144000));
 
-        public VegetableStatus Status { get; set; }
-
-        public Vegetable(VegetableStatus status)
+        private VegetableStatus? _status;
+        public VegetableStatus? Status
         {
-            Status = status;
-
-            if (status == VegetableStatus.Good) StatusChanger.Elapsed += ChangeFromGoodStatus;
-            else if (status == VegetableStatus.Normal) StatusChanger.Elapsed += ChangeFromNormalStatus;
-            else if (status == VegetableStatus.Bad) StatusChanger.Elapsed += ChangeFromBadStatus;
-            else
+            get { return _status; }
+            set
             {
-                StatusChanger.Dispose();
-                StatusChanger = null;
-                return;
-            }
+                _status = value;
 
-            StatusChanger.AutoReset = true;
-            StatusChanger.Start();
+                if (value == VegetableStatus.Good) _statusChanger.Elapsed += ChangeFromGoodStatus;
+                else if (value == VegetableStatus.Normal) _statusChanger.Elapsed += ChangeFromNormalStatus;
+                else if (value == VegetableStatus.Bad) _statusChanger.Elapsed += ChangeFromBadStatus;
+                else
+                {
+                    _statusChanger.Dispose();
+                    _statusChanger = null;
+                    return;
+                }
+
+                _statusChanger.AutoReset = true;
+                _statusChanger.Start();
+            }
         }
+
+        public virtual double Price { get; }
+
+        public Vegetable() { }
+        public Vegetable(VegetableStatus status) => Status = status;
 
         public void ChangeFromGoodStatus(object source, ElapsedEventArgs e)
         {
-            Status = VegetableStatus.Normal;
-            StatusChanger.Elapsed -= ChangeFromGoodStatus;
-            StatusChanger.Elapsed += ChangeFromNormalStatus;
+            _status = VegetableStatus.Normal;
+            _statusChanger.Elapsed -= ChangeFromGoodStatus;
+            _statusChanger.Elapsed += ChangeFromNormalStatus;
         }
         public void ChangeFromNormalStatus(object source, ElapsedEventArgs e)
         {
-            Status = VegetableStatus.Bad;
-            StatusChanger.Elapsed -= ChangeFromNormalStatus;
-            StatusChanger.Elapsed += ChangeFromBadStatus;
+            _status = VegetableStatus.Bad;
+            _statusChanger.Elapsed -= ChangeFromNormalStatus;
+            _statusChanger.Elapsed += ChangeFromBadStatus;
 
         }
         public void ChangeFromBadStatus(object source, ElapsedEventArgs e)
         {
-            Status = VegetableStatus.Toxic;
-            StatusChanger.Dispose();
+            _status = VegetableStatus.Toxic;
+            _statusChanger.Dispose();
         }
     }
 }
