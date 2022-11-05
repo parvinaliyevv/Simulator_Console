@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\Exam\\Exam\\Exam.csproj": {}
+    "C:\\Users\\HP\\Desktop\\New folder\\C_Sharp-Exam\\Exam\\Exam.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\Exam\\Exam\\Exam.csproj": {
+    "C:\\Users\\HP\\Desktop\\New folder\\C_Sharp-Exam\\Exam\\Exam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\Exam\\Exam\\Exam.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\New folder\\C_Sharp-Exam\\Exam\\Exam.csproj",
         "projectName": "Exam",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\Exam\\Exam\\Exam.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\New folder\\C_Sharp-Exam\\Exam\\Exam.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\Exam\\Exam\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\New folder\\C_Sharp-Exam\\Exam\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://packagesource": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -51,7 +55,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -60,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
